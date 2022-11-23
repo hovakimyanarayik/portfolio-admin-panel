@@ -1,0 +1,11 @@
+.works-grid {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat( auto-fill, minmax(350px, 1rem));
+    gap: 20px;
+}
+
+.works-grid div {
+  max-width: 450px;
+}
