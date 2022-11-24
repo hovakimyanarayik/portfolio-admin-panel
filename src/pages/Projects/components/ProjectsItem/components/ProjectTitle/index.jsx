@@ -10,15 +10,14 @@ const ProjectTitle = ({ work }) => {
     return ( 
         <div className='work-title'>
             {work.id + ' ' + work.name}
-            <div className='buttons'>
+            <div>
                 <Button 
-                    type="primary" 
                     shape="circle" 
+                    type='primary'
                     icon={<EditOutlined />} 
                     onClick={() => navigate(`${work.id}/edit`)}
                 />
                 <Button 
-                    type='primary'
                     shape='circle'
                     danger 
                     onClick={() => {

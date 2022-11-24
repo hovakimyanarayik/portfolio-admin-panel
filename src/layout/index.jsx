@@ -2,7 +2,8 @@ import React from 'react';
 import {  Layout as AppLayout } from 'antd';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-const { Content, Footer } = AppLayout;
+import Footer from './components/Footer';
+const { Content} = AppLayout;
 
 
 const Layout = ({children}) => {
@@ -19,13 +20,7 @@ const Layout = ({children}) => {
         >
           {children}
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Arayik Hovakimyan
-        </Footer>
+        <Footer />
       </AppLayout>
     </AppLayout>
   );

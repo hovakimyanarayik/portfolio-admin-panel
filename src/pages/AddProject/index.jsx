@@ -1,9 +1,14 @@
 import React from 'react';
+import LoginForm from '../../components/LoginForm';
+import ProjectForm from '../../components/ProjectForm';
 
 
 const AddProject = () => {
     return ( 
-        <div>Add project</div>
+        <div style={{marginTop: "50px"}}>
+            {/* <ProjectForm /> */}
+            <LoginForm />
+        </div>
      );
 }
  

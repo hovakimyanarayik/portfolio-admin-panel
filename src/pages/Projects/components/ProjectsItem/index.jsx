@@ -9,7 +9,7 @@ import ProjectBody from './components/ProjectBody';
 const ProjectsItem = ({work}) => {
     return ( 
         <Card
-            className='work-item' 
+            className='project-item' 
             title={<ProjectTitle work={work} />}
         >
             <ProjectBody work={work} />
