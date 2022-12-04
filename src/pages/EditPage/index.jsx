@@ -9,10 +9,10 @@ const EditPage = () => {
     console.log(slug);
 
     const projectData = mockData.find(data => data.id === +slug)
-    return ( 
+    return (
         <div>
             Edit page {slug}
-            <ProjectForm initialValues={projectData} />
+            <ProjectForm initialValues={projectData} onSubmit={() => {console.log('edit submit');}} />
         </div>
      );
 }

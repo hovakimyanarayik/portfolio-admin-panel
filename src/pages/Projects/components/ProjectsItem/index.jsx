@@ -6,13 +6,13 @@ import ProjectBody from './components/ProjectBody';
 
 
 
-const ProjectsItem = ({work}) => {
+const ProjectsItem = ({project}) => {
     return ( 
         <Card
             className='project-item' 
-            title={<ProjectTitle work={work} />}
+            title={<ProjectTitle project={project} />}
         >
-            <ProjectBody work={work} />
+            <ProjectBody project={project} />
         </Card>
      );
 }

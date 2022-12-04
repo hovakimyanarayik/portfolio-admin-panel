@@ -1,34 +1,31 @@
 import React from 'react';
-import { auth } from '../../firebase.config'
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import {auth} from '../firebase.config'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button, Form, Input } from 'antd';
 
-
-
-const LoginForm = () => {
-
-  // onAuthStateChanged   ---- useEffecti pes functiaya
-
-  const login = async ({ email, password }) => {
+const register = async ({email, password}) => {
+    console.log(email, password);
     try {
-      const user = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-      )
-      console.log(user);
+        const user = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        )
+        console.log(user);
     } catch (error) {
         console.log(error.message);
     }
-  }
+}
+
+const Registration = () => {
 
     const onFinish = (values) => {
         console.log('Success:', values);
-        login(values)
+        register(values)
       };
-      const onFinishFailed = (errorInfo) => {
+    const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
-      };
+    };
 
     return ( 
         <Form
@@ -65,5 +62,5 @@ const LoginForm = () => {
       </Form>
      );
 }
- 
-export default LoginForm;
+
+export default Registration;

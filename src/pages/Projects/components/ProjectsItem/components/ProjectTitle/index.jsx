@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 import './style.css'
 
-const ProjectTitle = ({ work }) => {
+const ProjectTitle = ({ project }) => {
     const navigate = useNavigate()
     return ( 
         <div className='work-title'>
-            {work.id + ' ' + work.name}
+            {project.name}
             <div>
                 <Button 
                     shape="circle" 
                     type='primary'
                     icon={<EditOutlined />} 
-                    onClick={() => navigate(`${work.id}/edit`)}
+                    onClick={() => navigate(`${project.id}/edit`)}
                 />
                 <Button 
                     shape='circle'

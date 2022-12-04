@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 import './style.css'
 
-const ProjectBody = ({work}) => {
+const ProjectBody = ({project}) => {
     const navigate = useNavigate()
     
     return ( 
         <div 
             className='card-body'
-            onClick={() => navigate(`${work.id}`)}
+            onClick={() => navigate(`${project.id}`)}
         >
             <Image
                 width='100%'
-                src="https://az837918.vo.msecnd.net/publishedimages/articles/1733/en-CA/images/cover/1/free-download-this-stunning-alberta-scene-for-your-device-background-image-L-6.jpg"
+                src={project.thumbnail}
                 preview={{
                     mask: <EyeOutlined style={{fontSize: "25px"}} />
                 }}

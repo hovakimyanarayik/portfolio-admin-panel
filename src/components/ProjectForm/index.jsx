@@ -5,10 +5,10 @@ import { Button, Form, Input, Upload } from 'antd';
 const { Item } = Form
 
 
-const ProjectForm = ({initialValues = {}}) => {
-    
+const ProjectForm = ({initialValues = {}, onSubmit}) => {
     const onFinish = (values) => {
         console.log('Success:', values);
+        onSubmit(values)
       };
       const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -21,7 +21,6 @@ const ProjectForm = ({initialValues = {}}) => {
     //     }
     //     return e?.fileList;
     //   };
-
 
     return ( 
         <Form
@@ -43,7 +42,7 @@ const ProjectForm = ({initialValues = {}}) => {
 
             <Item
                 label="Source Code"
-                name="sourceCode"
+                name="srcCodeUrl"
                 rules={[{ required: true, message: 'Please input source code!' }]}
             >
                 <Input />
@@ -65,7 +64,7 @@ const ProjectForm = ({initialValues = {}}) => {
                 <Input />
             </Item>
 
-            <Item label="Image">
+            {/* <Item label="Image">
                 <Item 
                     name="image" 
                     valuePropName="fileList" 
@@ -81,7 +80,7 @@ const ProjectForm = ({initialValues = {}}) => {
                         <p className="ant-upload-hint">Support for a single or bulk upload.</p>
                     </Upload.Dragger>
                 </Item>
-            </Item>
+            </Item> */}
 
             <Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button type="primary" htmlType="submit">

@@ -1,9 +1,15 @@
 import { Typography } from 'antd';
 import { Header as HeaderAnt } from 'antd/es/layout/layout';
 import React from 'react';
+import { auth } from '../../../firebase.config'
+import { signOut } from 'firebase/auth';
 
 
 const Header = () => {
+
+  const logout = async () => {
+    await signOut(auth)
+  }
 
     return ( 
         <HeaderAnt
@@ -16,7 +22,10 @@ const Header = () => {
           alignItems: 'center'
         }}
         >
-            <Typography.Link>Log Out</Typography.Link>
+            <Typography.Link onClick={() => {
+              logout()
+              console.log(auth, 'logged out');
+            }}>Log Out</Typography.Link>
         </HeaderAnt>
      );
 }
