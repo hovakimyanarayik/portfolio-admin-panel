@@ -14,25 +14,16 @@ function getItem(label, key, icon, children) {
     };
   }
   const items = [
-      getItem('My Projects', '1', <AppstoreOutlined />),
-      getItem('Add New Project', '2', <PlusCircleOutlined />),
+      getItem('My Projects', '/projects', <AppstoreOutlined />),
+      getItem('Add New Project', '/add', <PlusCircleOutlined />),
       ];
 
 const Sidebar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate()
 
-    const handleClick = e => {
-      switch(e.key) {
-        case '1': {
-          navigate('/projects')
-          break;
-        }
-        case '2': {
-          navigate('/add')
-          break;
-        }
-      }
+    const onClick = ({ key }) => {
+      navigate(key)
     }
 
     return ( 
@@ -44,10 +35,10 @@ const Sidebar = () => {
             <div className="logo" />
             <Menu 
               theme="dark" 
-              defaultSelectedKeys={['1']} 
               mode="inline"  
+              defaultSelectedKeys={['/projects']}
               items={items} 
-              onClick={handleClick}
+              onClick={onClick}
 
             />
         </Sider>

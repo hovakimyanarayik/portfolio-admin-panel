@@ -1,22 +1,35 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm';
 import ProjectForm from '../../components/ProjectForm';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../firebase.config';
+import useProjects from '../../hooks/useProjects';
+import useStorage from '../../hooks/useStorage';
 
 
 const AddProject = () => {
-    const projectsCollectionRef = collection(db, 'projects')
+    const {addProject, isLoading} = useProjects()
 
+    // es uploadingi logikan tanel hooki mej initial mi hat nkari link tal ban u addProjecti jamanak qcel valuesi mej u erevi uploadingne pahel mejy
 
-    const onSubmit = async (values) => {
-        await addDoc(projectsCollectionRef, values)
+    const {isUploading, downloadURL, uploadFile, removeFileURL} = useStorage()
+
+    const onSubmit = (values) => {
+        addProject({...values, thumbnail: downloadURL})
+        removeFileURL()
+    }
+
+    if(isLoading) {
+        return <h1>Loading...</h1>
     }
     return ( 
         <div style={{marginTop: "50px"}}>
-            <ProjectForm onSubmit={onSubmit} />
+            <ProjectForm 
+                onUpload={uploadFile} 
+                handleRemoveFile={removeFileURL} 
+                isUploading={isUploading} 
+                onSubmit={onSubmit} 
+                imageUrl={downloadURL}
+            />
         </div>
      );
 }
- 
+
 export default AddProject;

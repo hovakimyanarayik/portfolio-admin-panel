@@ -11,14 +11,12 @@ const ProjectBody = ({project}) => {
     return ( 
         <div 
             className='card-body'
-            onClick={() => navigate(`${project.id}`)}
+            onClick={() => window.open(project.demoUrl, '_blank')}
         >
             <Image
                 width='100%'
                 src={project.thumbnail}
-                preview={{
-                    mask: <EyeOutlined style={{fontSize: "25px"}} />
-                }}
+                preview={false}
             />
         </div>
      );

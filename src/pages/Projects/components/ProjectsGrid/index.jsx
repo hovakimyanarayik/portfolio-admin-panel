@@ -6,26 +6,31 @@ import { getDocs, collection } from 'firebase/firestore'
 import { db } from '../../../../firebase.config';
 
 import './style.css'
+import useProjects from '../../../../hooks/useProjects';
 
 const ProjectsGrid = () => {
-    const projectsCollectionRef = collection(db, 'projects')
-    const [projects, setProjects] = useState([])
+    // const projectsCollectionRef = collection(db, 'projects')
+    // const [projects, setProjects] = useState([])
+    
 
-    useEffect(() => {
-        const getProjects = async () => {
-            const data = await getDocs(projectsCollectionRef)
-            setProjects(data.docs.map(doc => ({...doc.data(), id: doc.id})))
-        }
+    // useEffect(() => {
+    //     const getProjects = async () => {
+    //         const data = await getDocs(projectsCollectionRef)
+    //         setProjects(data.docs.map(doc => ({...doc.data(), id: doc.id})))
+    //     }
 
-        getProjects()
-    }, [])
-    console.log(projects);
+    //     getProjects()
+    // }, [])
+    const {projects, isLoading} = useProjects()
 
+    if(isLoading) {
+        return <h1>Loading...</h1>
+    }
     return ( 
         <div className='works-grid'>
             {projects.map(project => <ProjectsItem key={project.id} project={project} />)}
         </div>
      );
 }
- 
+
 export default ProjectsGrid;

@@ -1,31 +1,13 @@
 import React from 'react';
-import {auth} from '../firebase.config'
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button, Form, Input } from 'antd';
 
-const register = async ({email, password}) => {
-    console.log(email, password);
-    try {
-        const user = await createUserWithEmailAndPassword(
-            auth,
-            email,
-            password
-        )
-        console.log(user);
-    } catch (error) {
-        console.log(error.message);
-    }
-}
 
-const Registration = () => {
+
+const AuthForm = ({onSubmit, error}) => {
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-        register(values)
+        onSubmit(values)
       };
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
 
     return ( 
         <Form
@@ -33,7 +15,6 @@ const Registration = () => {
         labelCol={{span: 8}}
         wrapperCol={{span: 8}}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
@@ -62,5 +43,5 @@ const Registration = () => {
       </Form>
      );
 }
-
-export default Registration;
+ 
+export default AuthForm;

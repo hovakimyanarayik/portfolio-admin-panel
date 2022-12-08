@@ -1,10 +1,9 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import AddProject from "./pages/AddProject";
-import EditPage from "./pages/EditPage";
+import EditProject from "./pages/EditProject";
 import Login from "./pages/Login";
 import Projects from "./pages/Projects";
-import SingleProject from "./pages/SingleProject";
-import Registration from "./Registration";
+import Registration from "./pages/Registration";
 
 
 const routes = [
@@ -21,12 +20,8 @@ const routes = [
             },
             {
                 path: ":slug/edit",
-                element: <EditPage />
-            },
-            {
-                path: ":slug",
-                element: <SingleProject />
-            },
+                element: <EditProject />
+            }
         ]
     },
     {
@@ -44,6 +39,5 @@ const routes = [
 ]
 
 const Routes = () => useRoutes(routes)
-
 
 export default Routes

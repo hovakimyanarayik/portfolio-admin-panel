@@ -1,26 +1,15 @@
 import React from 'react';
 import { FileImageOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Upload } from 'antd';
+import UploadField from '../UploadField';
 
 const { Item } = Form
 
 
-const ProjectForm = ({initialValues = {}, onSubmit}) => {
+const ProjectForm = ({initialValues = {}, onSubmit, onUpload, isUploading, handleRemoveFile, imageUrl}) => {
     const onFinish = (values) => {
-        console.log('Success:', values);
         onSubmit(values)
       };
-      const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-      };
-
-    //   const normFile = (e) => {
-    //     console.log('Upload event:', e);
-    //     if (Array.isArray(e)) {
-    //       return e;
-    //     }
-    //     return e?.fileList;
-    //   };
 
     return ( 
         <Form
@@ -29,7 +18,6 @@ const ProjectForm = ({initialValues = {}, onSubmit}) => {
             wrapperCol={{ span: 8 }}
             initialValues={initialValues}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
             <Item
@@ -56,34 +44,16 @@ const ProjectForm = ({initialValues = {}, onSubmit}) => {
                 <Input />
             </Item>
 
-            <Item
-                label="Thumbnail"
-                name="thumbnail"
-                rules={[{ required: true, message: 'Please input thumbnail!' }]}
-            >
-                <Input />
+            <Item wrapperCol={{ offset: 8, span: 8 }}>
+                <UploadField 
+                    handleRemoveFile={handleRemoveFile} 
+                    onUpload={onUpload}
+                    imageUrl={imageUrl} 
+                />
             </Item>
 
-            {/* <Item label="Image">
-                <Item 
-                    name="image" 
-                    valuePropName="fileList" 
-                    // getValueFromEvent={normFile}
-                    noStyle
-                    // rules={[{ required: true, message: 'Please upload image!' }]}
-                >
-                    <Upload.Dragger name="files">
-                        <p className="ant-upload-drag-icon">
-                        <FileImageOutlined />
-                        </p>
-                        <p className="ant-upload-text">Click or drag Image to this area to upload</p>
-                        <p className="ant-upload-hint">Support for a single or bulk upload.</p>
-                    </Upload.Dragger>
-                </Item>
-            </Item> */}
-
-            <Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+            <Item wrapperCol={{ offset: 11, span: 11 }}>
+                <Button type="primary" htmlType="submit" disabled={isUploading}>
                     Submit
                 </Button>
             </Item>

@@ -1,15 +1,19 @@
 import { Typography } from 'antd';
 import { Header as HeaderAnt } from 'antd/es/layout/layout';
 import React from 'react';
-import { auth } from '../../../firebase.config'
-import { signOut } from 'firebase/auth';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Header = () => {
+  // 
+  const {user} = useSelector(state => state.auth)
 
-  const logout = async () => {
-    await signOut(auth)
-  }
+  const navigate = useNavigate()
+
+
+  const { logout } = useAuth()
 
     return ( 
         <HeaderAnt
@@ -22,10 +26,16 @@ const Header = () => {
           alignItems: 'center'
         }}
         >
-            <Typography.Link onClick={() => {
-              logout()
-              console.log(auth, 'logged out');
-            }}>Log Out</Typography.Link>
+          {user ? (
+            <>
+              <Typography.Title>{user.email}</Typography.Title>
+              <Typography.Link onClick={logout}>Log Out</Typography.Link>
+              </>
+          ) : (
+            <Typography.Link onClick={() => navigate('/login')}>Login</Typography.Link>
+
+          )}
+
         </HeaderAnt>
      );
 }
