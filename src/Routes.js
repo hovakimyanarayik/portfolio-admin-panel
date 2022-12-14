@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
+import Protected from "./components/Protected";
 import AddProject from "./pages/AddProject";
 import EditProject from "./pages/EditProject";
 import Login from "./pages/Login";
@@ -20,13 +21,13 @@ const routes = [
             },
             {
                 path: ":slug/edit",
-                element: <EditProject />
+                element: <Protected><EditProject /></Protected> 
             }
         ]
     },
     {
         path: "/add",
-        element: <AddProject />
+        element: <Protected><AddProject /></Protected> 
     },
     {
         path: '/login',

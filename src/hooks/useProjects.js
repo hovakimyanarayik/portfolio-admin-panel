@@ -1,15 +1,13 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { useCallback} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { db } from "../firebase.config";
-import { endLoading, getProjects, startLoading } from "../slices/projectsSlice";
+import { getProjects, startLoading, setError } from "../slices/projectsSlice";
 
 function useProjects() {
-  const { projects, isLoading } = useSelector((state) => state.projects);
+  const { projects, isLoading, error } = useSelector((state) => state.projects);
   const projectsCollectionRef = collection(db, "projects");
   const dispatch = useDispatch();
-
-  // stexi error state tanel reduxi statum pahel u mi tex error message component dnel effectov to nayi errorin cuyc ta
 
   const addProject = useCallback(async (values) => {
     try {
@@ -17,8 +15,7 @@ function useProjects() {
       await addDoc(projectsCollectionRef, values);
       dispatch(getProjects(projectsCollectionRef))
     } catch (error) {
-      dispatch(endLoading())
-      console.log(error.message);
+      dispatch(setError(error.message))
     }
   }, []);
 
@@ -27,23 +24,32 @@ function useProjects() {
   };
 
   const updateProject = useCallback(async (id, values) => {
-    const projectDoc = doc(projectsCollectionRef, id)
-    dispatch(startLoading())
-    await updateDoc(projectDoc, values)
-    dispatch(getProjects(projectsCollectionRef))
+    try {
+      const projectDoc = doc(projectsCollectionRef, id)
+      dispatch(startLoading())
+      await updateDoc(projectDoc, values)
+      dispatch(getProjects(projectsCollectionRef))
+    } catch (error) {
+      dispatch(setError(error.message))
+    }
   })
 
   const deleteProject = useCallback(async (id) => {
-    const projectDoc = doc(projectsCollectionRef, id)
-    dispatch(startLoading())
-    await deleteDoc(projectDoc)
-    dispatch(getProjects(projectsCollectionRef))
+    try {
+      const projectDoc = doc(projectsCollectionRef, id)
+      dispatch(startLoading())
+      await deleteDoc(projectDoc)
+      dispatch(getProjects(projectsCollectionRef))
+    } catch (error) {
+      dispatch(setError(error.message))
+    }
   })
 
 
   return { 
         projects, 
-        isLoading,  
+        isLoading,
+        error,
         addProject, 
         getProjectById, 
         updateProject, 

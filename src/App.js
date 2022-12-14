@@ -5,8 +5,7 @@ import Routes from "./Routes";
 
 import { Provider } from "react-redux";
 import store from "./store";
-import useProjects from "./hooks/useProjects";
-import { useEffect } from "react";
+
 
 function App() {
   

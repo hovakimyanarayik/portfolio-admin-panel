@@ -1,3 +1,4 @@
+import Typography from 'antd/es/typography/Typography';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import ProjectForm from '../../components/ProjectForm';
@@ -19,7 +20,7 @@ const EditProject = () => {
     }
     return (
         <div>
-            Edit page {slug}
+            <Typography.Title>Edit Project "{updatableProject.name}"</Typography.Title>
             <ProjectForm 
                 initialValues={updatableProject}
                 onUpload={uploadFile} 

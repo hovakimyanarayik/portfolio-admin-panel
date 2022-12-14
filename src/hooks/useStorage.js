@@ -18,7 +18,6 @@ function useStorage() {
                 setIsUploading(true)
             },
             (error) => {
-                console.log(error);
                 options.onError(error)
                 setIsUploading(false)
             },

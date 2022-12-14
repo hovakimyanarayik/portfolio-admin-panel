@@ -4,13 +4,13 @@ import { db } from "../../firebase.config";
 
 export const getProjects = createAsyncThunk(
     'projects/getProjects',
-    async function() {
+    async function(_, { rejectWithValue }) {
         const projectsCollectionRef = collection(db, "projects");
         try {
             const data = await getDocs(projectsCollectionRef);
             return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         } catch (error) {
-            console.log(error.message);
+            return rejectWithValue(error.message);
         }
     }
 )
@@ -31,6 +31,10 @@ const projectsSlice = createSlice({
         },
         endLoading: (state) => {
             state.isLoading = false
+        },
+        setError: (state, action) => {
+            state.isLoading = false
+            state.error = action.payload
         }
      },
      extraReducers: builder => {
@@ -43,12 +47,12 @@ const projectsSlice = createSlice({
                 state.isLoading = false
             })
             .addCase(getProjects.rejected, (state, action) => {
-                // set anel error
-                // hoooki meji stati errory berel stex u stei erroric kaxvac error handler sarqel
+                state.isLoading = false
+                state.error = action.payload
             })
      }
 })
 
-export const { setProjects, startLoading, endLoading } = projectsSlice.actions
+export const { setProjects, startLoading, endLoading, setError } = projectsSlice.actions
 
 export default projectsSlice.reducer

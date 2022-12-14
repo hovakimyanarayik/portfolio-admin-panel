@@ -14,8 +14,8 @@ const ProjectForm = ({initialValues = {}, onSubmit, onUpload, isUploading, handl
     return ( 
         <Form
             name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 8 }}
+            labelCol={{span: 6}}
+            wrapperCol={{span: 12}}
             initialValues={initialValues}
             onFinish={onFinish}
             autoComplete="off"

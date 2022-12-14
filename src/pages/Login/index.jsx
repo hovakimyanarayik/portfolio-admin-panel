@@ -1,36 +1,32 @@
 import Typography from 'antd/es/typography/Typography';
 import React from 'react';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm';
+import ErrorDisplay from '../../components/ErrorDisplay';
 import useAuth from '../../hooks/useAuth';
-import useMessage from '../../hooks/useMessage';
 
 
 const Login = () => {
-    const {login, isLoading, error} = useAuth()
-    const {message, contextHolder} = useMessage()
+    const {login, isLoading, error, user} = useAuth()
     const navigate = useNavigate()
-
-    useEffect(() => {
-        if(error) {
-            message.error(error)
-        }
-    }, [error])
 
     function onSubmit(values) {
         login(values)
     }
 
+    if(user) {
+        return <Navigate to={'/projects'} replace/>
+    }
     if(isLoading){
         return <h1>Loading...</h1>
     }
     return ( 
-        <div style={{marginTop: "50px"}}>
-            {contextHolder}
-            <AuthForm onSubmit={onSubmit} error={error} />
-            <Typography.Link onClick={() => navigate('/registration')}>Don't have an account?</Typography.Link>
-        </div>
+        <ErrorDisplay error={error}>
+                <Typography.Title>Sign In</Typography.Title>
+                <AuthForm onSubmit={onSubmit}/>
+                <Typography.Link onClick={() => navigate('/registration')}>Don't have an account?</Typography.Link>
+        </ErrorDisplay>
      );
 }
 

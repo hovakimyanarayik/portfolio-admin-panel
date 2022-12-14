@@ -3,7 +3,7 @@ import { Button, Form, Input } from 'antd';
 
 
 
-const AuthForm = ({onSubmit, error}) => {
+const AuthForm = ({onSubmit}) => {
 
     const onFinish = (values) => {
         onSubmit(values)
@@ -12,8 +12,8 @@ const AuthForm = ({onSubmit, error}) => {
     return ( 
         <Form
         name="basic"
-        labelCol={{span: 8}}
-        wrapperCol={{span: 8}}
+        labelCol={{span: 6}}
+        wrapperCol={{span: 12}}
         onFinish={onFinish}
         autoComplete="off"
       >
@@ -24,7 +24,6 @@ const AuthForm = ({onSubmit, error}) => {
         >
           <Input />
         </Form.Item>
-  
         <Form.Item
           label="Password"
           name="password"
