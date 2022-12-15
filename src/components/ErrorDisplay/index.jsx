@@ -8,6 +8,8 @@ const ErrorDisplay = ({error, children}) => {
         if(error) {
             message.error(error)
         }
+
+        // eslint-disable-next-line
     }, [error])
     return ( 
         <>

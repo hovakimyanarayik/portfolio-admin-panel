@@ -1,6 +1,5 @@
 import Typography from 'antd/es/typography/Typography';
 import React from 'react';
-import { useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm';
 import ErrorDisplay from '../../components/ErrorDisplay';

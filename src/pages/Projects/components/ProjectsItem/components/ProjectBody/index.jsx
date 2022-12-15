@@ -1,12 +1,9 @@
-import { EyeOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import './style.css'
 
 const ProjectBody = ({project}) => {
-    const navigate = useNavigate()
     
     return ( 
         <div 

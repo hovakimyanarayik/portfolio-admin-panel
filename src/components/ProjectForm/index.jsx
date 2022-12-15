@@ -1,6 +1,5 @@
 import React from 'react';
-import { FileImageOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Upload } from 'antd';
+import { Button, Form, Input } from 'antd';
 import UploadField from '../UploadField';
 
 const { Item } = Form
