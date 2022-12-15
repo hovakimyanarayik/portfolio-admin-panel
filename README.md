@@ -1,6 +1,6 @@
-# Demo - arayik-portfolio-admin.netlify.app
+# Demo - https://arayik-portfolio-admin.netlify.app
 
-# Admin panel for - arayik-info.netlify.app
+# Admin panel for - https://arayik-info.netlify.app
 
 # Tech Stack 
 - React 
