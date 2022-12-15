@@ -7,8 +7,6 @@ import useStorage from '../../hooks/useStorage';
 const AddProject = () => {
     const {addProject, isLoading} = useProjects()
 
-    // es uploadingi logikan tanel hooki mej initial mi hat nkari link tal ban u addProjecti jamanak qcel valuesi mej u erevi uploadingne pahel mejy
-
     const {isUploading, downloadURL, uploadFile, removeFileURL} = useStorage()
 
     const onSubmit = (values) => {

@@ -3,7 +3,6 @@ import {  Layout as AppLayout } from 'antd';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import useProjects from '../hooks/useProjects';
 import { useDispatch } from 'react-redux';
 import { getProjects } from '../slices/projectsSlice';
 const { Content} = AppLayout;
@@ -14,6 +13,8 @@ const Layout = ({children}) => {
 
   useEffect(() => {
     dispatch(getProjects())
+
+    // eslint-disable-next-line
   }, [])
   return (
     <AppLayout
@@ -25,6 +26,7 @@ const Layout = ({children}) => {
       <AppLayout className="site-layout">
         <Header />
         <Content
+          style={{marginLeft: '10px'}}
         >
           {children}
         </Content>

@@ -5,5 +5,11 @@
     justify-content: center;
     grid-template-columns: repeat( auto-fill, minmax(380px, 1fr));
     gap: 20px;
+    z-index: -100;
 }
 
+@media screen and (max-width: 450px) {
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+}

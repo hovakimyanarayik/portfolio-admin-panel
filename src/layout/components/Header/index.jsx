@@ -28,8 +28,8 @@ const Header = () => {
         >
           {user ? (
             <>
-              <Typography.Title>{user.email}</Typography.Title>
-              <Typography.Link onClick={logout}>Log Out</Typography.Link>
+              <Typography.Paragraph style={{color: 'white'}}>{user.email}</Typography.Paragraph>
+              <Typography.Link style={{color: 'lightred'}} onClick={logout}>Log Out</Typography.Link>
               </>
           ) : (
             <Typography.Link onClick={() => navigate('/login')}>Login</Typography.Link>

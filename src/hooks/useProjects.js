@@ -17,6 +17,7 @@ function useProjects() {
     } catch (error) {
       dispatch(setError(error.message))
     }
+    // eslint-disable-next-line
   }, []);
 
   const getProjectById = (id) => {
@@ -32,7 +33,8 @@ function useProjects() {
     } catch (error) {
       dispatch(setError(error.message))
     }
-  })
+    // eslint-disable-next-line
+  }, [])
 
   const deleteProject = useCallback(async (id) => {
     try {
@@ -43,7 +45,8 @@ function useProjects() {
     } catch (error) {
       dispatch(setError(error.message))
     }
-  })
+    // eslint-disable-next-line
+  }, [])
 
 
   return { 

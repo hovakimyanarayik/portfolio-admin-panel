@@ -19,7 +19,7 @@ function getItem(label, key, icon, children) {
       ];
 
 const Sidebar = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const navigate = useNavigate()
 
     const onClick = ({ key }) => {
@@ -31,6 +31,7 @@ const Sidebar = () => {
           collapsible 
           collapsed={collapsed}  
           onCollapse={(value) => setCollapsed(value)}
+          style={{zIndex: 100}}
         >
             <div className="logo" />
             <Menu 
