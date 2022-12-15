@@ -1,4 +1,4 @@
-import { Navigate, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import Protected from "./components/Protected";
 import AddProject from "./pages/AddProject";
 import EditProject from "./pages/EditProject";
@@ -10,10 +10,6 @@ import Registration from "./pages/Registration";
 const routes = [
     {
         path: '',
-        element: <Navigate to='/projects' />
-    },
-    {
-        path: '/projects',
         children: [
             {
                 path: "",

@@ -4,6 +4,7 @@ import AuthForm from '../../components/AuthForm';
 import Typography from 'antd/es/typography/Typography';
 import { Navigate, useNavigate } from 'react-router-dom';
 import ErrorDisplay from '../../components/ErrorDisplay';
+import { Skeleton } from 'antd';
 
 
 const Registration = () => {
@@ -16,10 +17,10 @@ const Registration = () => {
   }
   
   if(user) {
-    return <Navigate to={'/projects'} replace/>
+    return <Navigate to={'/'} replace/>
   }
     if(isLoading) {
-      return <h1>Loading...</h1>
+      return <Skeleton />
     }
     return (
       <ErrorDisplay error={error}>

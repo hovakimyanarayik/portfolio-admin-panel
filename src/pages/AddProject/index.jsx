@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectForm from '../../components/ProjectForm';
 import useProjects from '../../hooks/useProjects';
 import useStorage from '../../hooks/useStorage';
+import { Skeleton } from 'antd';
 
 
 const AddProject = () => {
@@ -15,7 +16,7 @@ const AddProject = () => {
     }
 
     if(isLoading) {
-        return <h1>Loading...</h1>
+        return <Skeleton />
     }
     return ( 
         <div style={{marginTop: "50px"}}>

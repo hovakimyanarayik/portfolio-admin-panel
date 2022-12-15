@@ -14,7 +14,7 @@ function getItem(label, key, icon, children) {
     };
   }
   const items = [
-      getItem('My Projects', '/projects', <AppstoreOutlined />),
+      getItem('My Projects', '/', <AppstoreOutlined />),
       getItem('Add New Project', '/add', <PlusCircleOutlined />),
       ];
 

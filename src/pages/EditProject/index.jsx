@@ -1,9 +1,12 @@
-import Typography from 'antd/es/typography/Typography';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import ProjectForm from '../../components/ProjectForm';
 import useProjects from '../../hooks/useProjects';
 import useStorage from '../../hooks/useStorage';
+import { Skeleton } from 'antd';
+import Typography from 'antd/es/typography/Typography';
+
+
 
 
 const EditProject = () => {
@@ -16,7 +19,7 @@ const EditProject = () => {
         updateProject(slug, {...values, thumbnail: downloadURL || updatableProject.thumbnail})
     }
     if(isLoading) {
-        return <h1>Loading...</h1>
+        return <Skeleton />
     }
     return (
         <div>

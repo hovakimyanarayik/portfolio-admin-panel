@@ -5,9 +5,16 @@ import Routes from "./Routes";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import { useEffect } from "react";
 
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'Admin panel'
+
+    // eslint-disable-next-line
+  },[])
   
   return (
     <BrowserRouter>

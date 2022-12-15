@@ -1,6 +1,7 @@
-import Typography from 'antd/es/typography/Typography';
 import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { Skeleton } from 'antd';
+import Typography from 'antd/es/typography/Typography';
 import AuthForm from '../../components/AuthForm';
 import ErrorDisplay from '../../components/ErrorDisplay';
 import useAuth from '../../hooks/useAuth';
@@ -15,10 +16,10 @@ const Login = () => {
     }
 
     if(user) {
-        return <Navigate to={'/projects'} replace/>
+        return <Navigate to={'/'} replace/>
     }
     if(isLoading){
-        return <h1>Loading...</h1>
+        return <Skeleton />
     }
     return ( 
         <ErrorDisplay error={error}>

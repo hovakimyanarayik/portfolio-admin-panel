@@ -3,12 +3,13 @@ import ProjectsItem from '../ProjectsItem';
 
 import './style.css'
 import useProjects from '../../../../hooks/useProjects';
+import { Skeleton } from 'antd';
 
 const ProjectsGrid = () => {
     const {projects, isLoading} = useProjects()
 
     if(isLoading) {
-        return <h1>Loading...</h1>
+        return <Skeleton />
     }
     return ( 
         <div className='works-grid'>
